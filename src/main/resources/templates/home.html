@@ -1,0 +1,36 @@
+<html>
+    <head><title>Home Page</title></head>
+    <body>
+        <h1>Hello !</h1>
+        <p>Welcome to <span th:text="${appName}">Our App</span></p>
+
+        <div th:switch="${customers}">
+            <h2 th:case="null">No Customers yet!</h2>
+            <div th:case="*">
+                <h2>Customers</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="customer : ${customers}">
+                            <td th:text="${customer.id}"></td>
+                            <td th:text="${customer.firstName}"></td>
+                            <td th:text="${customer.lastName}"></td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>   
+
+            <p><a href="/newCustomer">Add a new Customer</a></p>
+
+
+        </div>
+    </body>
+</html>
